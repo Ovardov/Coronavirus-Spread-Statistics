@@ -1,0 +1,32 @@
+.card {
+  padding: 0.5em;
+  border: 1px solid var(--color-grey-main);
+  border-radius: 0.3em;
+  cursor: pointer;
+
+  & p {
+    padding-bottom: 0;
+  }
+
+  & .header {
+    display: flex;
+    align-items: center;
+
+    & .icon {
+      margin-left: auto;
+
+      & > span {
+        font-size: 16px;
+      }
+    }
+  }
+
+  & .info {
+    margin-left: auto;
+  }
+
+  & .more-info > p {
+    display: flex;
+    align-items: center;
+  }
+}
