@@ -12,6 +12,11 @@
     display: flex;
     align-items: center;
 
+    & > img {
+        width: 5em;
+        height: 5em;
+    }
+
     & .icon {
       margin-left: auto;
 
@@ -21,12 +26,16 @@
     }
   }
 
-  & .info {
-    margin-left: auto;
-  }
+  .more-info {
+    margin-top: var(--spacing-layout-elements);
 
-  & .more-info > p {
-    display: flex;
-    align-items: center;
+    & > p {
+      display: flex;
+      align-items: center;
+    }
+
+    & .info {
+      margin-left: auto;
+    }
   }
 }

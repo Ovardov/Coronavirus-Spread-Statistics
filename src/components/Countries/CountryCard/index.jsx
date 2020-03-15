@@ -30,14 +30,4 @@ function CountryCard({ country, cases, recovered, deaths, todayDeaths, todayCase
     )
 }
 
-
-// country: "China"
-// cases: 80849
-// todayCases: 25
-// deaths: 3199
-// todayDeaths: 10
-// recovered: 66926
-// active: 10724
-// critical: 3226
-
 export default CountryCard

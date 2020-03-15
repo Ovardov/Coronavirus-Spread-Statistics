@@ -1,22 +1,45 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react';
+import Marker from './Marker'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-function Map() {
-    return(
-        <GoogleMapReact
-        //   bootstrapURLKeys={{ key: 'AIzaSyA6yjgj2IcEHPxKFXj7hcAb7K2mwHbY-rA' }}
-          defaultCenter={{lat: 80, lng: -180}}
-          defaultZoom={2}
-        >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
-          />
-        </GoogleMapReact>
+const renderMarkers = (markers) => {
+  return markers.map(({ latitude, longitude, name, country }) => {
+    return (
+      <Marker
+        key={country}
+        lat={latitude}
+        lng={longitude}
+        text={name}
+      />
     )
+  })
+}
+
+
+function Map({ markers }) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [map, setMap] = useState(null);
+  const [maps, setMaps] = useState(null);
+
+  const handleLoadedMap = (map, maps) => {
+    setMap(map);
+    setMaps(maps)
+    setIsLoaded(true)
+  }
+
+  return (
+    <GoogleMapReact
+      bootstrapURLKeys={{ key: 'AIzaSyA6yjgj2IcEHPxKFXj7hcAb7K2mwHbY-rA' }}
+      defaultCenter={{ lat: 42.7219285, lng: 24.422234 }}
+      defaultZoom={7}
+      onGoogleApiLoaded={({ map, maps }) => handleLoadedMap(map, maps)}
+      yesIWantToUseGoogleMapApiInternals
+    >
+      {isLoaded && markers.length > 0 && renderMarkers(markers)}
+
+    </GoogleMapReact>
+  )
 }
 
 export default Map

@@ -8,12 +8,18 @@ function HomePage() {
     const [allCases, setAllCases] = useState({ confirmed: null, recovered: null, deaths: null });
     const [allCountries, setAllCountries] = useState({});
 
+    const markers = [
+        {
+            latitude: 42.7219285, longitude: 24.422234, name: 'Test', country: 'Bulgaria'
+        }
+    ]
+
     useEffect(() => {
         (async function getCases() {
             try {
                 const casesRes = await dataService.loadAllCases();
                 const countriesRes = await dataService.loadAllCountries();
-                
+
                 setAllCases({ cases: casesRes.cases, recovered: casesRes.recovered, deaths: casesRes.deaths });
                 setAllCountries(countriesRes);
             } catch (e) {
@@ -25,10 +31,10 @@ function HomePage() {
     return (
         <div className={styles.container}>
             <section className={styles.aside}>
-                <Aside allCases={allCases} allCountries={allCountries}/>
+                <Aside allCases={allCases} allCountries={allCountries} />
             </section>
             <section className={styles.map}>
-                {/* <Map /> */}
+                <Map markers={markers} />
             </section>
         </div>
     )
