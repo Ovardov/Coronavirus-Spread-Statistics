@@ -30,7 +30,7 @@ function Map({ markers }) {
 
   return (
     <GoogleMapReact
-      bootstrapURLKeys={{ key: 'AIzaSyA6yjgj2IcEHPxKFXj7hcAb7K2mwHbY-rA' }}
+      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
       defaultCenter={{ lat: 42.7219285, lng: 24.422234 }}
       defaultZoom={7}
       onGoogleApiLoaded={({ map, maps }) => handleLoadedMap(map, maps)}
