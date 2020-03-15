@@ -25,7 +25,7 @@ function Map({ markers }) {
   const handleLoadedMap = (map, maps) => {
     setMap(map);
     setMaps(maps)
-    setIsLoaded(true)
+    setIsLoaded(true) 
   }
 
   return (
