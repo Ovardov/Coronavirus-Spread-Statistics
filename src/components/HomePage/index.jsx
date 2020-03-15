@@ -10,7 +10,7 @@ function HomePage() {
 
     const markers = [
         {
-            latitude: 42.7219285, longitude: 24.422234, name: 'Test', country: 'Bulgaria'
+            latitude: 42.7219285, longitude: 24.422234, country: 'Bulgaria', ...allCountries[0]
         }
     ]
 

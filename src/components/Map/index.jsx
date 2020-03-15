@@ -4,13 +4,14 @@ import Marker from './Marker'
 
 
 const renderMarkers = (markers) => {
-  return markers.map(({ latitude, longitude, name, country }) => {
+  console.log(markers)
+  return markers.map((marker) => {
     return (
       <Marker
-        key={country}
-        lat={latitude}
-        lng={longitude}
-        text={name}
+        key={marker.country}
+        lat={marker.latitude}
+        lng={marker.longitude}
+        {...marker}
       />
     )
   })
@@ -27,6 +28,20 @@ function Map({ markers }) {
     setMaps(maps)
     setIsLoaded(true) 
   }
+
+  useEffect(() => {
+    if (map && maps && markers.length > 0) {
+      const bounds = new maps.LatLngBounds()
+
+      for (const marker of markers) {
+        const position = new maps.LatLng(marker.latitude, marker.longitude)
+        bounds.extend(position)
+      }
+
+      map.fitBounds(bounds)
+    }
+  }, [markers, maps, map])
+
 
   return (
     <GoogleMapReact

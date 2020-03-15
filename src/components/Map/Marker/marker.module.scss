@@ -1,3 +1,22 @@
 .marker {
     color: #EA4335;
+    position: absolute;
+    transform: translate(-50%, -100%);
+}
+
+.description {
+    background: #FFFFFF;
+    border-radius: 0.5em;
+    border: 1px solid var(--color-grey-main);
+    padding: 0.5em;
+    min-width: 15em;
+
+    & > p {
+        display: flex;
+        padding-bottom: 0.3em;
+
+        & .info {
+            margin-left: auto;
+        }
+    }
 }
