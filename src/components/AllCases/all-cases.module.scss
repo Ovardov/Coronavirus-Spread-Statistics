@@ -7,6 +7,19 @@
 
   & > section {
     text-align: center;
+    font-weight: 700;
+
+    &.cases {
+      color: #EC610E;
+    }
+
+    &.recovered {
+      color: green;
+    }
+
+    &.deaths {
+      color: red;
+    }
   }
 
   & p {

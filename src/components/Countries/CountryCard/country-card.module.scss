@@ -1,15 +1,18 @@
 .more-info {
   padding: 0.5em 0.2em;
-  border: 1px solid var(--color-blue-main);
-  border-radius: 0.3em;
 
-  & > p {
+  & > li {
     display: flex;
     align-items: center;
-    padding-bottom: 0.3em;
+    padding-bottom: 0;
+    margin-bottom: 0.3em;
+
+    &:nth-child(2n) {
+      background: #E8E8E8;
+    }
 
     &:last-child {
-      padding-bottom: 0;
+      margin-bottom: 0;
     }
   }
 
