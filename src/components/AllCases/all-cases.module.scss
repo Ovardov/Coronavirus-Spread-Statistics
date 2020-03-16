@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  align-items: center;
+  margin-bottom: var(--spacing-layout-elements);
+
+  & > section {
+    text-align: center;
+  }
+
+  & p {
+    padding-bottom: 0;
+  }
+
+  & .title {
+    font-size: 0.85em;
+  }
+}

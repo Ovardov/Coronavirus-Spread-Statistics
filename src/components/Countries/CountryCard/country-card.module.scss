@@ -1,41 +1,19 @@
-.card {
-  padding: 0.5em;
-  border: 1px solid var(--color-grey-main);
+.more-info {
+  padding: 0.5em 0.2em;
+  border: 1px solid var(--color-blue-main);
   border-radius: 0.3em;
-  cursor: pointer;
 
-  & p {
-    padding-bottom: 0;
-  }
-
-  & .header {
+  & > p {
     display: flex;
     align-items: center;
+    padding-bottom: 0.3em;
 
-    & > img {
-        width: 5em;
-        height: 5em;
-    }
-
-    & .icon {
-      margin-left: auto;
-
-      & > span {
-        font-size: 16px;
-      }
+    &:last-child {
+      padding-bottom: 0;
     }
   }
 
-  .more-info {
-    margin-top: var(--spacing-layout-elements);
-
-    & > p {
-      display: flex;
-      align-items: center;
-    }
-
-    & .info {
-      margin-left: auto;
-    }
+  & .info {
+    margin-left: auto;
   }
 }
