@@ -14,15 +14,6 @@ function HomePage() {
   const [searchedCountry, setSearchedCountry] = useState('')
   const [searchedCountryStats, setSearchedCountryStats] = useState({});
 
-  const markers = [
-    {
-      latitude: 42.7219285,
-      longitude: 24.422234,
-      country: 'Bulgaria',
-      ...allCountries[0]
-    }
-  ]
-
   useEffect(() => {
     (async function getCases() {
       try {
@@ -52,7 +43,7 @@ function HomePage() {
   return (
     <div className={styles.container}>
       <InfoBox allCases={allCases} setSearchedCountry={setSearchedCountry} findCountry={findCountry} searchedCountryStats={searchedCountryStats} />
-      <Map markers={markers} />
+      <Map />
     </div>
   )
 }
