@@ -4,7 +4,6 @@ import Marker from './Marker'
 
 
 const renderMarkers = (markers) => {
-  console.log(markers)
   return markers.map((marker) => {
     return (
       <Marker

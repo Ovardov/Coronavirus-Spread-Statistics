@@ -1,0 +1,40 @@
+.container {
+  margin-right: auto;
+  display: flex;
+  position: relative;
+
+  & p {
+    position: relative;
+    padding-bottom: 0;
+
+    & input[type='text'] {
+      padding: 0.2em 8em 0.2em 0.5em;
+      border-radius: 0.3em;
+      outline: none;
+      border: 1px solid #e8e8e8;
+      width: 100%;
+
+      &:focus,
+      &:hover {
+        border-color: var(--color-blue-main);
+      }
+    }
+  }
+
+  & .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    background: var(--color-blue-main);
+    color: #ffffff;
+    padding: 0 0.5em;
+    height: 100%;
+    border: 1px solid var(--color-blue-main);
+    border-top-right-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    font-size: 1.1em;
+    cursor: pointer;
+  }
+}
