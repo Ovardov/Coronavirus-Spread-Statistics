@@ -1,17 +1,28 @@
+.sticky-header {
+  position: sticky;
+  top: 0;
+//   box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.5);
+
+  & .container {
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+  }
+}
+
+.body .container {
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
 .container {
   width: 100%;
-  border-radius: 1em;
-  box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.5);
   overflow: hidden;
   border-collapse: collapse;
-  position: relative;
-  table-layout: fixed;
 
   & .header {
-    background: #6c7ae0;
+    background: var(--color-blue-main);
     color: #ffffff;
   }
-
 
   & .grid {
     display: grid;
@@ -21,7 +32,7 @@
     padding: 1em;
 
     &:nth-child(2n) {
-      background: #F8F6FF;
+      background: #f8f6ff;
     }
 
     & > th,

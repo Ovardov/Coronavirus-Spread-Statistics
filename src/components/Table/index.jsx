@@ -20,22 +20,32 @@ const renderCountries = filteredCountries => {
 
 const Table = ({ filteredCountries }) => {
   return (
-    <table className={styles.container}>
-      <thead className={styles.header}>
-        <tr className={styles.grid}>
-          <th className={styles['two-columns']}>County</th>
-          <th>Total Cases</th>
-          <th>Today Cases</th>
-          <th>Total Recovered</th>
-          <th>Total Deaths</th>
-          <th>Today Deaths</th>
-          <th>Active</th>
-          <th>Critical</th>
-        </tr>
-      </thead>
+    <>
+      <div className={styles['sticky-header']}>
+        <table className={styles.container}>
+          <thead className={styles.header}>
+            <tr className={styles.grid}>
+              <th className={styles['two-columns']}>County</th>
+              <th>Total Cases</th>
+              <th>Today Cases</th>
+              <th>Total Recovered</th>
+              <th>Total Deaths</th>
+              <th>Today Deaths</th>
+              <th>Active</th>
+              <th>Critical</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
 
-      <tbody className={styles.body}>{filteredCountries.length > 0 && renderCountries(filteredCountries)}</tbody>
-    </table>
+      <div className={styles.body}>
+        <table className={styles.container}>
+          <tbody className={styles.body}>
+            {filteredCountries.length > 0 && renderCountries(filteredCountries)}
+          </tbody>
+        </table>
+      </div>
+    </>
   )
 }
 
