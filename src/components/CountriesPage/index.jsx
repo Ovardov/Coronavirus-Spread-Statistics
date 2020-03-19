@@ -39,7 +39,7 @@ const CountriesPage = () => {
           <button className="button">Go To Map</button>
         </Link>
 
-        <Search findCountry={findCountry} className={styles['search-box']} />
+        <Search className={styles['search-box']} findCountry={findCountry} />
       </div>
 
       <Table filteredCountries={filteredCountries} />
