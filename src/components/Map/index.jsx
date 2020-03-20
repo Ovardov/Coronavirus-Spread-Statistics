@@ -13,8 +13,6 @@ function Map({marker, setMarker, getCountryData}) {
     setIsLoaded(true)
   }
 
-  console.log(marker);
-
   // useEffect(() => {
   //   if (map && maps && marker) {
   //     const bounds = new maps.LatLngBounds()
