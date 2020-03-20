@@ -5,7 +5,7 @@ import dataService from '../../services/dataService'
 import styles from './home-page.module.scss'
 
 
-const getCountryCovidStats = (results, allCountries) => {
+const getCountryCovidStats = (results, allCountries, searchedCountry) => {
   const countryData = results.filter(res => res.types[0] === 'country')[0]
 
   const countryLongName = countryData['formatted_address'].toLowerCase()
@@ -13,7 +13,7 @@ const getCountryCovidStats = (results, allCountries) => {
   const countryAddress = results[0]['formatted_address'].split(', ');
   const countryShortName = countryAddress[countryAddress.length - 1].toLowerCase()
 
-  const countryStats = allCountries.filter(({ country }) => country.toLowerCase() === countryLongName || country.toLowerCase() === countryShortName)[0]
+  const countryStats = allCountries.filter(({ country }) => country.toLowerCase() === countryLongName || country.toLowerCase() === countryShortName || country.toLowerCase() === searchedCountry.toLowerCase())[0]
 
   return countryStats
 }
@@ -73,7 +73,7 @@ function HomePage() {
       e.preventDefault()
 
       const {results} = await dataService.loadCountryFromName(searchedCountry);
-      const countryStats = getCountryCovidStats(results, allCountries);
+      const countryStats = getCountryCovidStats(results, allCountries, searchedCountry);
 
       const { location } = results[0].geometry
 
