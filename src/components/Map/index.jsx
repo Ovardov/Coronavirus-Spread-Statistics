@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Marker from './Marker'
 
-function Map({marker, setMarker}) {
+function Map({marker, setMarker, getCountryData}) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [map, setMap] = useState(null)
   const [maps, setMaps] = useState(null)
@@ -12,6 +12,8 @@ function Map({marker, setMarker}) {
     setMaps(maps)
     setIsLoaded(true)
   }
+
+  console.log(marker);
 
   // useEffect(() => {
   //   if (map && maps && marker) {
@@ -24,30 +26,18 @@ function Map({marker, setMarker}) {
   //   }
   // }, [marker, maps, map])
 
-
-  const handleClick = props => {
-    const { lat, lng } = props
-
-    const newMarker = {
-      lat: parseFloat(lat),
-      lng: parseFloat(lng)
-    }
-
-    setMarker(newMarker)
-  }
-
   return (
     <GoogleMapReact
-      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
+      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY, v: '3.32' }}
       defaultCenter={{ lat: 30, lng: 0 }}
       defaultZoom={1}
       center={marker}
-      // zoom={7}
+      zoom={marker ? 5 : 1}
       onGoogleApiLoaded={({ map, maps }) => handleLoadedMap(map, maps)}
       yesIWantToUseGoogleMapApiInternals
-      onClick={handleClick}
+      onClick={getCountryData}
     >
-      {isLoaded && marker && <Marker lat={marker.lat} lng={marker.lng} />}
+      {isLoaded && marker && <Marker lat={marker.lat} lng={marker.lng} {...marker}/>}
     </GoogleMapReact>
   )
 }

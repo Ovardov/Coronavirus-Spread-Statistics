@@ -1,6 +1,7 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import AllCases from '../AllCases'
-import CountryCard from '../Countries/CountryCard'
+// import CountryCard from '../Countries/CountryCard'
 import styles from './info-box.module.scss'
 import Search from '../Search'
 
@@ -13,9 +14,14 @@ const InfoBox = ({ allCases, findCountryHandler, searchedCountry, setSearchedCou
       </section>
 
       <section className={styles['search-box']}>
-        <Search findCountryHandler={findCountryHandler} searchedCountry={searchedCountry} setSearchedCountry={setSearchedCountry}/>
+        <Search findCountryHandler={findCountryHandler} searchedCountry={searchedCountry} setSearchedCountry={setSearchedCountry} />
       </section>
 
+      <section>
+        <Link to="/countries">
+          <button className="button">See All Countries</button>
+        </Link>
+      </section>
     </section>
   )
 }

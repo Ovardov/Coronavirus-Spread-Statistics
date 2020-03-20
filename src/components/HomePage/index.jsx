@@ -4,6 +4,20 @@ import InfoBox from '../InfoBox'
 import dataService from '../../services/dataService'
 import styles from './home-page.module.scss'
 
+
+const getCountryCovidStats = (results, allCountries) => {
+  const countryData = results.filter(res => res.types[0] === 'country')[0]
+
+  const countryLongName = countryData['formatted_address'].toLowerCase()
+
+  const countryAddress = results[0]['formatted_address'].split(', ');
+  const countryShortName = countryAddress[countryAddress.length - 1].toLowerCase()
+
+  const countryStats = allCountries.filter(({ country }) => country.toLowerCase() === countryLongName || country.toLowerCase() === countryShortName)[0]
+
+  return countryStats
+}
+
 function HomePage() {
   const [allCases, setAllCases] = useState({
     confirmed: null,
@@ -13,10 +27,9 @@ function HomePage() {
   const [allCountries, setAllCountries] = useState({})
   const [searchedCountry, setSearchedCountry] = useState('')
   const [marker, setMarker] = useState(null)
-  const [pickedCountryFromMap, setPickedCountryFromMap] = useState(null)
 
   useEffect(() => {
-    ;(async function getCases() {
+    ; (async function getCases() {
       try {
         const casesRes = await dataService.loadAllCases()
         const countriesRes = await dataService.loadAllCountries()
@@ -33,40 +46,43 @@ function HomePage() {
     })()
   }, [])
 
-  // useEffect(() => {
-  //   async function getCountryData() {
-  //     try {
-  //       const {results} = await dataService.loadCountry(marker)
+  const getCountryData = async props => {
+    try {
+      const { lat, lng } = props
 
-  //       const countryData = results.filter(res => res.types[0] === 'country')[0];
+      const location = {
+        lat,
+        lng
+      }
 
-  //       const countryName = countryData['formatted_address'];
+      const { results } = await dataService.loadCountryFromLocation(location)
+      const countryStats = getCountryCovidStats(results, allCountries);
 
-  //       const countryStats = allCountries.filter(country => country.country === countryName)[0];
-
-  //       setPickedCountryFromMap(countryStats)
-  //     } catch (e) {
-  //       console.log(e)
-  //     }
-  //   }
-
-  //   if (marker) {
-  //     getCountryData();
-  //   }
-  // }, [marker])
+      setMarker({
+        lat,
+        lng,
+        ...countryStats
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   const findCountryHandler = async e => {
     try {
       e.preventDefault()
 
-      const countryStats = Object.values(allCountries).filter(
-        country => country.country.toLowerCase() === searchedCountry.toLowerCase()
-      )[0]
+      const {results} = await dataService.loadCountryFromName(searchedCountry);
+      const countryStats = getCountryCovidStats(results, allCountries);
 
-      const data = await dataService.loadCountryFromName(countryStats.country)
-      const { location } = data.results[0].geometry;
+      const { location } = results[0].geometry
 
-      setMarker(location)
+      const newMarker = {
+        ...location,
+        ...countryStats
+      }
+
+      setMarker(newMarker)
     } catch (e) {
       console.log(e)
     }
@@ -80,7 +96,11 @@ function HomePage() {
         searchedCountry={searchedCountry}
         setSearchedCountry={setSearchedCountry}
       />
-      <Map marker={marker} setMarker={setMarker} />
+      <Map
+        marker={marker}
+        setMarker={setMarker}
+        getCountryData={getCountryData}
+      />
     </div>
   )
 }
