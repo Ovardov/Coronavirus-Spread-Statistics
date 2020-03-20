@@ -1,0 +1,12 @@
+.container {
+  width: 80%;
+  margin: 2em auto;
+  
+  & .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-layout-elements);
+    align-items: center;
+
+  }
+}

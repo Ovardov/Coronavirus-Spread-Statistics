@@ -1,10 +1,11 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import AllCases from '../AllCases'
-import CountryCard from '../Countries/CountryCard'
+// import CountryCard from '../Countries/CountryCard'
 import styles from './info-box.module.scss'
 import Search from '../Search'
 
-const InfoBox = ({ allCases, findCountry, setSearchedCountry, searchedCountryStats }) => {
+const InfoBox = ({ allCases, findCountryHandler, searchedCountry, setSearchedCountry }) => {
 
   return (
     <section className={styles.container}>
@@ -12,12 +13,14 @@ const InfoBox = ({ allCases, findCountry, setSearchedCountry, searchedCountrySta
         <AllCases {...allCases} />
       </section>
 
-      <section className={Object.keys(searchedCountryStats).length > 0 ? styles['search-box'] : ''}>
-        <Search setSearchedCountry={setSearchedCountry} findCountry={findCountry} />
+      <section className={styles['search-box']}>
+        <Search findCountryHandler={findCountryHandler} searchedCountry={searchedCountry} setSearchedCountry={setSearchedCountry} />
       </section>
 
       <section>
-        {Object.keys(searchedCountryStats).length > 0 && <CountryCard {...searchedCountryStats} />}
+        <Link to="/countries">
+          <button className="button">See All Countries</button>
+        </Link>
       </section>
     </section>
   )
