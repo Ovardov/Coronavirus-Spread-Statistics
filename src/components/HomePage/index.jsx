@@ -1,50 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, Fragment } from 'react'
 import Map from '../Map'
 import InfoBox from '../InfoBox'
-import dataService from '../../services/dataService'
+import { dataService } from '../../services/dataService'
+import { useStatistics } from '../../hooks/useStatistics'
 import styles from './home-page.module.scss'
+import HomePageSkeleton from './Skeleton'
 
 
 const getCountryCovidStats = (results, allCountries, searchedCountry) => {
   const countryData = results.filter(res => res.types[0] === 'country')[0]
+
+  searchedCountry = searchedCountry ? searchedCountry.toLowerCase() : '';
 
   const countryLongName = countryData['formatted_address'].toLowerCase()
 
   const countryAddress = results[0]['formatted_address'].split(', ');
   const countryShortName = countryAddress[countryAddress.length - 1].toLowerCase()
 
-  const countryStats = allCountries.filter(({ country }) => country.toLowerCase() === countryLongName || country.toLowerCase() === countryShortName || country.toLowerCase() === searchedCountry.toLowerCase())[0]
+  const countryStats = allCountries.length > 0 && allCountries.filter(({ country }) => country.toLowerCase() === countryLongName || country.toLowerCase() === countryShortName || country.toLowerCase() === searchedCountry.toLowerCase())[0]
 
   return countryStats
 }
 
 function HomePage() {
-  const [allCases, setAllCases] = useState({
-    confirmed: null,
-    recovered: null,
-    deaths: null
-  })
-  const [allCountries, setAllCountries] = useState({})
+  const { allCases, allCountries } = useStatistics();
+
   const [searchedCountry, setSearchedCountry] = useState('')
   const [marker, setMarker] = useState(null)
 
-  useEffect(() => {
-    ; (async function getCases() {
-      try {
-        const casesRes = await dataService.loadAllCases()
-        const countriesRes = await dataService.loadAllCountries()
-
-        setAllCases({
-          cases: casesRes.cases,
-          recovered: casesRes.recovered,
-          deaths: casesRes.deaths
-        })
-        setAllCountries(countriesRes)
-      } catch (e) {
-        console.error('Load all cases', e)
-      }
-    })()
-  }, [])
 
   const getCountryData = async props => {
     try {
@@ -72,7 +55,7 @@ function HomePage() {
     try {
       e.preventDefault()
 
-      const {results} = await dataService.loadCountryFromName(searchedCountry);
+      const { results } = await dataService.loadCountryFromName(searchedCountry);
       const countryStats = getCountryCovidStats(results, allCountries, searchedCountry);
 
       const { location } = results[0].geometry
@@ -90,17 +73,23 @@ function HomePage() {
 
   return (
     <div className={styles.container}>
-      <InfoBox
-        allCases={allCases}
-        findCountryHandler={findCountryHandler}
-        searchedCountry={searchedCountry}
-        setSearchedCountry={setSearchedCountry}
-      />
-      <Map
-        marker={marker}
-        setMarker={setMarker}
-        getCountryData={getCountryData}
-      />
+      {Object.keys(allCases).length === 0 || allCountries.length === 0 ? (
+        <HomePageSkeleton />
+      ) : (
+          <Fragment>
+            <InfoBox
+              allCases={allCases}
+              findCountryHandler={findCountryHandler}
+              searchedCountry={searchedCountry}
+              setSearchedCountry={setSearchedCountry}
+            />
+            <Map
+              marker={marker}
+              setMarker={setMarker}
+              getCountryData={getCountryData}
+            />
+          </Fragment>
+        )}
     </div>
   )
 }

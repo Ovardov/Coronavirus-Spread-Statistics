@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Table from '../Table'
 import Search from '../Search'
+import { useStatistics } from '../../hooks/useStatistics'
 import styles from './countries-page.module.scss'
-import dataService from '../../services/dataService'
 
 const CountriesPage = () => {
-  const [allCountries, setAllCountries] = useState({})
-  const [filteredCountries, setFilteredCountries] = useState({})
+  const { allCountries } = useStatistics();
+
+  const [filteredCountries, setFilteredCountries] = useState(allCountries)
 
   const findCountry = e => {
     const newValue = e.target.value.toLowerCase()
@@ -20,17 +21,10 @@ const CountriesPage = () => {
   }
 
   useEffect(() => {
-    ;(async function getCases() {
-      try {
-        const countriesRes = await dataService.loadAllCountries()
-
-        setAllCountries(countriesRes)
-        setFilteredCountries(countriesRes)
-      } catch (e) {
-        console.error('Load all countries', e)
-      }
-    })()
-  }, [])
+    if (allCountries.length > 0) {
+      setFilteredCountries(allCountries)
+    }
+  }, [allCountries])
 
   return (
     <div className={styles.container}>
