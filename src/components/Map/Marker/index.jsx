@@ -10,6 +10,8 @@ function Marker({ cases, recovered, deaths, todayCases, todayDeaths, active, cri
                 size="3x"
             />
 
+            {/* <i class="fas fa-map-marker-alt"></i> */}
+
             <section className={styles.description}>
                 <p>All Cases: <span className={styles.info}>{cases}</span></p>
                 <p>Recovered: <span className={styles.info}>{recovered}</span></p>

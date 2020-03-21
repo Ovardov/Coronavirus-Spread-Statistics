@@ -1,0 +1,50 @@
+.container {
+  position: relative;
+
+  .info-box {
+    position: fixed;
+    top: 0.6em;
+    left: 0.6em;
+    z-index: 100;
+    background: #ffffff;
+    border-radius: 1em;
+    box-shadow: 0 0 0.3em 0 rgba(0, 0, 0, 0.5);
+    padding: 1em;
+    min-width: 396px;
+
+    @media (max-width: 1023px) {
+      min-width: 352px;
+    }
+
+    @media (max-width: 650px) {
+      min-width: 305px;
+    }
+
+    & .search-box {
+      margin-bottom: var(--spacing-layout-elements);
+    }
+
+    & .all-cases {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1.7em;
+      align-items: center;
+      margin-bottom: var(--spacing-layout-elements);
+      text-align: center;
+
+      & p {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .map {
+    & span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-const postService = {
+export const dataService = {
     loadAllCases: () => {      
         return fetch(`https://coronavirus-19-api.herokuapp.com/all`, {
             method: 'GET',
@@ -29,5 +29,3 @@ const postService = {
             .catch(err => console.error(err));
     }
 }
-
-export default postService;

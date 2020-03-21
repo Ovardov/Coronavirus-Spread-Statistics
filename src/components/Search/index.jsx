@@ -1,4 +1,5 @@
 import React from 'react';
+import FA from 'react-fontawesome'
 import styles from './search.module.scss';
 
 function Search({ findCountryHandler, searchedCountry, setSearchedCountry,  isFromTable}) {
@@ -8,7 +9,7 @@ function Search({ findCountryHandler, searchedCountry, setSearchedCountry,  isFr
         <input type="text" placeholder="Search" name="search" value={searchedCountry} onChange={e => setSearchedCountry(e.target.value)} />
       </p>
 
-      <button className={styles.button} onClick={findCountryHandler}><i className="fas fa-search"></i></button>
+      <button className={styles.button} onClick={findCountryHandler}><FA name="search" /></button>
     </form>
   )
 }
