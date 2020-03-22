@@ -4,25 +4,3 @@
     transform: translate(-50%, -100%);
     font-size: 3em;
 }
-
-.description {
-    background: #FFFFFF;
-    border-radius: 0.5em;
-    border: 1px solid var(--color-grey-main);
-    // padding: 1em;
-    min-width: 20em;
-    font-size: 1.3em;
-
-    & > p {
-        display: flex;
-        padding: 0.5em;
-
-        &:nth-child(2n) {
-            background: #f8f6ff;
-        }
-
-        & .info {
-            margin-left: auto;
-        }
-    }
-}

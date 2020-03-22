@@ -5,46 +5,51 @@ const renderCountries = filteredCountries => {
   return filteredCountries.map(country => {
     return (
       <tr key={country.country + country.cases} className={styles.grid}>
-        <td className={styles['two-columns']}>{country.country}</td>
+        <td>{country.country}</td>
         <td>{country.cases}</td>
         <td>{country.todayCases}</td>
         <td>{country.recovered}</td>
         <td>{country.deaths}</td>
         <td>{country.todayDeaths}</td>
-        <td>{country.active}</td>
-        <td>{country.critical}</td>
+        {/* <td>{country.active}</td> */}
+        {/* <td>{country.critical}</td> */}
       </tr>
     )
   })
 }
 
-const Table = ({ filteredCountries }) => {
+const renderColumns = (allColumns, sortCountriesHandler, lastSorting) => {
+  return allColumns.map(({ key, name, value }) => {
+    return <th key={key} onClick={() => sortCountriesHandler(value)}>
+      {name} <span className={styles.icon}>{lastSorting.key === value && <i className={`fas fa-arrow-${lastSorting.method === 'ascending' ? 'down' : 'up'}`}></i>}</span>
+    </th>
+
+  })
+}
+
+const Table = ({ filteredCountries, sortCountriesHandler, lastSorting }) => {
+  const allColumns = [
+    { key: 1, name: 'Country', value: 'country' },
+    { key: 2, name: 'Total Cases', value: 'cases' },
+    { key: 3, name: 'Today Cases', value: 'todayCases' },
+    { key: 4, name: 'Total Recovered', value: 'recovered' },
+    { key: 5, name: 'Total Deaths', value: 'deaths' },
+    { key: 6, name: 'Today Deaths', value: 'todayDeaths' },
+  ];
+
   return (
     <>
-      <div className={styles['sticky-header']}>
-        <table className={styles.container}>
-          <thead className={styles.header}>
-            <tr className={styles.grid}>
-              <th className={styles['two-columns']}>County</th>
-              <th>Total Cases</th>
-              <th>Today Cases</th>
-              <th>Total Recovered</th>
-              <th>Total Deaths</th>
-              <th>Today Deaths</th>
-              <th>Active</th>
-              <th>Critical</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
+      <table className={styles.container}>
+        <thead className={styles.header}>
+          <tr className={styles.grid}>
+            {renderColumns(allColumns, sortCountriesHandler, lastSorting)}
+          </tr>
+        </thead>
 
-      <div className={styles.body}>
-        <table className={styles.container}>
-          <tbody className={styles.body}>
-            {filteredCountries.length > 0 && renderCountries(filteredCountries)}
-          </tbody>
-        </table>
-      </div>
+        <tbody className={styles.body}>
+          {filteredCountries.length > 0 && renderCountries(filteredCountries)}
+        </tbody>
+      </table>
     </>
   )
 }
