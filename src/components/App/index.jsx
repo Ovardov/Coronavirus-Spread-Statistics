@@ -26,7 +26,6 @@ function App() {
             </main>
           </div>
         </Suspense>
-
       </BrowserRouter>
     </StatisticContext.Provider>
   )
