@@ -1,16 +1,13 @@
 import React, { Fragment } from 'react'
-import FA from 'react-fontawesome'
 import styles from './marker.module.scss'
 
 function Marker({ cases, recovered, deaths, todayCases, todayDeaths, active, critical, casesPerOneMillion }) {
 
     return (
         <Fragment>
-            <FA name="map-marker-alt" className={styles.marker}
-                size="3x"
-            />
-
-            {/* <i class="fas fa-map-marker-alt"></i> */}
+            <span className={styles.marker}>
+                <i className="fas fa-map-marker-alt"></i>
+            </span>
 
             <section className={styles.description}>
                 <p>All Cases: <span className={styles.info}>{cases}</span></p>
