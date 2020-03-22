@@ -7,12 +7,13 @@ const renderCountries = filteredCountries => {
       <tr key={country.country + country.cases} className={styles.grid}>
         <td>{country.country}</td>
         <td>{country.cases}</td>
-        <td>{country.todayCases}</td>
-        <td>{country.recovered}</td>
+        <td className={styles.yellow}>{country.todayCases}</td>
         <td>{country.deaths}</td>
-        <td>{country.todayDeaths}</td>
-        {/* <td>{country.active}</td> */}
-        {/* <td>{country.critical}</td> */}
+        <td className={styles.red}>{country.todayDeaths}</td>
+        <td>{country.recovered}</td>
+        <td>{country.active}</td>
+        <td>{country.critical}</td>
+        <td>{country.casesPerOneMillion}</td>
       </tr>
     )
   })
@@ -32,13 +33,16 @@ const Table = ({ filteredCountries, sortCountriesHandler, lastSorting }) => {
     { key: 1, name: 'Country', value: 'country' },
     { key: 2, name: 'Total Cases', value: 'cases' },
     { key: 3, name: 'Today Cases', value: 'todayCases' },
-    { key: 4, name: 'Total Recovered', value: 'recovered' },
-    { key: 5, name: 'Total Deaths', value: 'deaths' },
-    { key: 6, name: 'Today Deaths', value: 'todayDeaths' },
+    { key: 4, name: 'Total Deaths', value: 'deaths' },
+    { key: 5, name: 'Today Deaths', value: 'todayDeaths' },
+    { key: 6, name: 'Total Recovered', value: 'recovered' },
+    { key: 7, name: 'Active', value: 'active' },
+    { key: 8, name: 'Critical', value: 'critical' },
+    { key: 9, name: 'Cases Per One Million', value: 'casesPerOneMillion' },
   ];
 
   return (
-    <>
+    <div className={styles.box}>
       <table className={styles.container}>
         <thead className={styles.header}>
           <tr className={styles.grid}>
@@ -50,7 +54,7 @@ const Table = ({ filteredCountries, sortCountriesHandler, lastSorting }) => {
           {filteredCountries.length > 0 && renderCountries(filteredCountries)}
         </tbody>
       </table>
-    </>
+    </div>
   )
 }
 

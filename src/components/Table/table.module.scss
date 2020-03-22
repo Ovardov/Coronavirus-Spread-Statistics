@@ -1,67 +1,80 @@
-thead,
-tbody,
-tr,
-td,
-th {
-  display: block;
+.box::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
 }
 
-tbody::-webkit-scrollbar {
-  width: 0.7em;
-}
-
-tbody::-webkit-scrollbar-thumb {
+.box::-webkit-scrollbar-thumb {
   border-radius: 0.25em;
   background: var(--color-blue-main);
 }
 
+.box {
+  overflow-y: scroll;
+  max-height: 80vh;
+  width: 100%;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.15);
+  border-radius: 0.3em;
+  border: 1px solid black;
+}
+
 .container {
   width: 100%;
-  height: 80vh;
-  overflow: hidden;
+  height: 100%;
   border-collapse: collapse;
-  border-radius: 0.3em;
-  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.15);
 
-  & .header {
-    background: var(--color-blue-main);
-    color: #ffffff;
-    padding-right: 0.7em;
+ 
+
+  & tr {
+    border-bottom: 1px solid black;
+
+    .red {
+      background: #ff0000b5;
+      color: #FFF;
+    }
+
+    .yellow {
+      background: #ffeeaafc;
+    }
+
+    & td,
+    & th {
+      border-right: 1px solid black;
+      text-align: center;
+      padding: 0.7em;
+      width: 50px;
+  
+      &:first-of-type {
+        text-align: left;
+      }
+    }
+  
+    & th {
+      cursor: pointer;
+      position: sticky;
+      background: #FFF;
+      z-index: 10000;
+      top: 0;
+  
+      & .icon {
+        margin-left: 0.3em;
+      }
+    }
+    
+    & td {
+      text-align: right;
+    }
   }
 
   .body {
     overflow: scroll;
     height: 100%;
-  }
 
-  & .grid {
-    display: grid;
-    grid-template-columns: 1.2fr repeat(5, 1fr);
-    gap: 1em;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em;
-
-    &:nth-child(2n) {
-      background: #f8f6ff;
+    & tr:last-of-type {
+      border-bottom: 0;
     }
 
-    & > th {
-      cursor: pointer;
-
-      & .icon {
-        margin-left: 0.3em;
-      }
-    }
-
-    &>th,
-    &>td {
-      text-align: center;
-    }
-
-    & > th:first-of-type,
-    & > td:first-of-type {
-      text-align: left;
+    & tr:nth-child(2n + 1) {
+      background: #EEE;
     }
   }
 }
