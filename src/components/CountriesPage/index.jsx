@@ -9,13 +9,15 @@ const CountriesPage = () => {
   const { allCountries } = useStatistics();
 
   const [filteredCountries, setFilteredCountries] = useState(allCountries)
+  const [searchedCountry, setSearchedCountry] = useState('')
+  const [lastSorting, setLastSorting] = useState({ method: 'descending', key: 'cases' });
 
-  const findCountry = e => {
-    const newValue = e.target.value.toLowerCase()
+  const findCountryHandler = e => {
+    e.preventDefault();
 
-    const countries = allCountries.filter(country =>
-      country.country.toLowerCase().includes(newValue)
-    )
+    const filterValue = searchedCountry ? searchedCountry.toLowerCase() : '';
+
+    const countries = allCountries.filter(({ country }) => country.toLowerCase().includes(filterValue))
 
     setFilteredCountries(countries)
   }
@@ -26,6 +28,30 @@ const CountriesPage = () => {
     }
   }, [allCountries])
 
+  useEffect(() => {
+    const filterValue = searchedCountry ? searchedCountry.toLowerCase() : '';
+
+    const countries = allCountries.filter(({ country }) => country.toLowerCase().includes(filterValue))
+
+    setFilteredCountries(countries)
+  }, [searchedCountry])
+
+  const sortCountriesHandler = (key) => {
+    const countries = [...filteredCountries]
+
+    const sortingMethod = lastSorting.method === 'ascending' && lastSorting.key === key ? 'descending' : 'ascending';
+
+    const sortedCountries = countries.sort((a, b) => {
+      return key === 'country'
+        ? (sortingMethod === 'ascending' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key]))
+        : (sortingMethod === 'ascending' ? a[key] - b[key] : b[key] - a[key])
+    });
+
+    setLastSorting({method: sortingMethod, key});
+    setFilteredCountries(sortedCountries);
+  }
+
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -33,10 +59,10 @@ const CountriesPage = () => {
           <button className="button">Go To Map</button>
         </Link>
 
-        <Search className={styles['search-box']} findCountry={findCountry} />
+        <Search className={styles['search-box']} setSearchedCountry={setSearchedCountry} searchedCountry={searchedCountry} findCountryHandler={findCountryHandler} />
       </div>
 
-      <Table filteredCountries={filteredCountries} />
+      <Table filteredCountries={filteredCountries} sortCountriesHandler={sortCountriesHandler} lastSorting={lastSorting}/>
     </div>
   )
 }

@@ -35,7 +35,7 @@ function Map({marker, setMarker, getCountryData}) {
       yesIWantToUseGoogleMapApiInternals
       onClick={getCountryData}
     >
-      {isLoaded && marker && <Marker lat={marker.lat} lng={marker.lng} {...marker}/>}
+      {isLoaded && marker && <Marker lat={marker.lat} lng={marker.lng} marker={marker}/>}
     </GoogleMapReact>
   )
 }

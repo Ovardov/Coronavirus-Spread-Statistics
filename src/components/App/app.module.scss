@@ -1,18 +1,13 @@
 .site {
     max-width: var(--layout-main-width);
-    min-height: 100vh;
+    max-height: 100vh;
     margin: 0 auto;
     background: #FFFFFF;
     position: relative;
 
     & .site-main {
         max-width: var(--layout-content-width);
-        // margin: var(--spacing-layout-elements) auto 0 auto;
         margin: 0 auto 0 auto;
-        // padding-bottom: var(--spacing-layout-elements);
         padding-bottom: 0;
-        // display: flex;
-        // flex-wrap: wrap;
-        // flex-grow: 1;
     }
 }

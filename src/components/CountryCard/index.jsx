@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './country-card.module.scss'
 
-function CountryCard({ cases, recovered, deaths, todayDeaths, todayCases, active, critical }) {
+function CountryCard({ cases, recovered, deaths, todayDeaths, todayCases, active, critical, casesPerOneMillion }) {
     return (
         <ul className={styles['more-info']}>
             <li>All Cases: <span className={styles.info}>{cases}</span></li>
@@ -11,6 +11,7 @@ function CountryCard({ cases, recovered, deaths, todayDeaths, todayCases, active
             <li>Today Deaths: <span className={styles.info}>{todayDeaths}</span></li>
             <li>Active: <span className={styles.info}>{active}</span></li>
             <li>Critical: <span className={styles.info}>{critical}</span></li>
+            <li>Cases Per One Million: <span className={styles.info}>{casesPerOneMillion}</span></li>
         </ul>
     )
 }
