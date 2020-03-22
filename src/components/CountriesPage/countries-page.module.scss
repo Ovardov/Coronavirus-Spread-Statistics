@@ -1,5 +1,5 @@
 .container {
-  width: 80%;
+  width: 90%;
   margin: 2em auto;
   
   & .header {
@@ -7,6 +7,5 @@
     justify-content: space-between;
     margin-bottom: var(--spacing-layout-elements);
     align-items: center;
-
   }
 }
