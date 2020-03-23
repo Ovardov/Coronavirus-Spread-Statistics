@@ -6,6 +6,7 @@ import {
 } from '../../hooks/useStatistics'
 import styles from './app.module.scss'
 import HomePageSkeleton from '../HomePage/Skeleton'
+import CountriesPageSkeleton from '../CountriesPage/Skeleton'
 
 const HomePage = lazy(() => import('../HomePage'))
 const CountriesPage = lazy(() => import('../CountriesPage'))
@@ -25,9 +26,11 @@ function App() {
                 </Switch>
               </Suspense>
 
-              <Switch>
-              <Route path="/countries" component={CountriesPage} />
-              </Switch>
+              <Suspense fallback={<CountriesPageSkeleton />}>
+                <Switch>
+                  <Route path="/countries" component={CountriesPage} />
+                </Switch>
+              </Suspense>
             </main>
           </div>
         </Suspense>
