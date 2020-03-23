@@ -22,8 +22,6 @@
   height: 100%;
   border-collapse: collapse;
 
- 
-
   & tr {
     border-bottom: 1px solid black;
 
@@ -54,10 +52,11 @@
       background: #FFF;
       z-index: 10000;
       top: 0;
-  
-      & .icon {
-        margin-left: 0.3em;
+
+      & .name {
+        margin-right: 0.3em;
       }
+
     }
     
     & td {

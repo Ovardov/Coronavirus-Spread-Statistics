@@ -21,10 +21,12 @@ const renderCountries = filteredCountries => {
 
 const renderColumns = (allColumns, sortCountriesHandler, lastSorting) => {
   return allColumns.map(({ key, name, value }) => {
-    return <th key={key} onClick={() => sortCountriesHandler(value)}>
-      {name} <span className={styles.icon}>{lastSorting.key === value && <i className={`fas fa-arrow-${lastSorting.method === 'ascending' ? 'down' : 'up'}`}></i>}</span>
-    </th>
-
+    return (
+      <th key={key} onClick={() => sortCountriesHandler(value)}>
+        <span className={styles.name}>{name} </span>
+        <span className={styles.icon}>{lastSorting.key === value && <i className={`fas fa-arrow-${lastSorting.method === 'ascending' ? 'up' : 'down'}`}></i>}</span>
+      </th>
+    )
   })
 }
 

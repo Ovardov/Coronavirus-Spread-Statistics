@@ -17,7 +17,30 @@ const getCountryCovidStats = (results, allCountries, searchedCountry) => {
   const countryAddress = results[0]['formatted_address'].split(', ');
   const countryShortName = countryAddress[countryAddress.length - 1].toLowerCase()
 
-  const countryStats = allCountries.length > 0 && allCountries.filter(({ country }) => country.toLowerCase() === countryLongName || country.toLowerCase() === countryShortName || country.toLowerCase() === searchedCountry.toLowerCase())[0]
+  let countryStats = allCountries.length > 0 && allCountries.filter(({ country }) => country.toLowerCase() === countryLongName || country.toLowerCase() === countryShortName || country.toLowerCase() === searchedCountry.toLowerCase())[0]
+
+  // Edge cases
+  if(!countryStats) {
+    let key = '';
+
+    let countryName = countryData['formatted_address'];
+
+    if(countryName === 'South Korea') {
+      key = 'S. Korea';
+    } else if(countryName === 'United Arab Emirates') {
+      key = 'UAE'
+    } else if(countryName === 'Democratic Republic of the Congo') {
+      key = 'DRC'
+    } else if(countryName === 'St Barthélemy') {
+      key = 'St. Barth'
+    } else if(countryName === 'St Lucia') {
+      key = 'Saint Lucia'
+    } else if(countryName === 'St Vincent and the Grenadines') {
+      key = 'St. Vincent Grenadines';
+    }
+    
+    countryStats = allCountries.length > 0 && allCountries.filter(({country}) => country.toLowerCase() === key.toLowerCase())[0];
+  }
 
   return countryStats
 }

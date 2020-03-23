@@ -7,7 +7,7 @@
     padding-bottom: 0;
 
     & input[type='text'] {
-      padding: 0.2em 8em 0.2em 0.5em;
+      padding: 0.2em 7.5em 0.2em 0.5em;
       border-radius: 0.3em;
       outline: none;
       border: 1px solid #e8e8e8;
@@ -35,6 +35,7 @@
     border-bottom-right-radius: 0.3em;
     font-size: 1.1em;
     cursor: pointer;
+    outline: none;
 
     &:hover {
       background: #FFFFFF;
