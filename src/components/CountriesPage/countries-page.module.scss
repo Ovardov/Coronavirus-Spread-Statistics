@@ -7,5 +7,10 @@
     justify-content: space-between;
     margin-bottom: var(--spacing-layout-elements);
     align-items: center;
+
+    & a:first-of-type {
+      margin-right: var(--spacing-layout-elements);
+      width: 13em;
+    }
   }
 }

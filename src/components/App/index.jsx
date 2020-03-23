@@ -1,7 +1,11 @@
 import React, { Suspense, lazy } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { useStatisticsProvider, StatisticContext } from '../../hooks/useStatistics'
+import {
+  useStatisticsProvider,
+  StatisticContext
+} from '../../hooks/useStatistics'
 import styles from './app.module.scss'
+import HomePageSkeleton from '../HomePage/Skeleton'
 
 const HomePage = lazy(() => import('../HomePage'))
 const CountriesPage = lazy(() => import('../CountriesPage'))
@@ -14,14 +18,15 @@ function App() {
       <BrowserRouter>
         <Suspense fallback={<div>Loading</div>}>
           <div className={styles.site}>
-            {/* {isLoading === true && <Loader isLoading={isLoading} />} */}
-
             <main className={styles['site-main']}>
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/countries" component={CountriesPage} />
+              <Suspense fallback={<HomePageSkeleton />}>
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                </Switch>
+              </Suspense>
 
-                {/* <Route path="*" component={NotFound} /> */}
+              <Switch>
+              <Route path="/countries" component={CountriesPage} />
               </Switch>
             </main>
           </div>
