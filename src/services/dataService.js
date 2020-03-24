@@ -1,6 +1,6 @@
 export const dataService = {
     loadAllCases: () => {      
-        return fetch(`https://coronavirus-19-api.herokuapp.com/all`, {
+        return fetch(`https://corona.lmao.ninja/all`, {
             method: 'GET',
         })
             .then(res => res.json())
@@ -8,7 +8,7 @@ export const dataService = {
     },
 
     loadAllCountries: () => {
-        return fetch(`https://coronavirus-19-api.herokuapp.com/countries`, {
+        return fetch(`https://corona.lmao.ninja/countries`, {
             method: 'GET',
         })
             .then(res => res.json())

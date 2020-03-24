@@ -10,14 +10,14 @@
     border-radius: 1em;
     box-shadow: 0 0 0.3em 0 rgba(0, 0, 0, 0.5);
     padding: 1em;
-    min-width: 396px;
+    min-width: 427px;
 
     @media (max-width: 1023px) {
-      min-width: 352px;
+      min-width: 380px;
     }
 
     @media (max-width: 650px) {
-      min-width: 305px;
+      min-width: 332px;
     }
 
     & .search-box {
@@ -35,6 +35,12 @@
       & p {
         padding-bottom: 0;
       }
+    }
+
+    & .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 

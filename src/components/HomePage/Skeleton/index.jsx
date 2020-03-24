@@ -28,8 +28,9 @@ const HomePageSkeleton = () => {
             <Skeleton width="100%" height={36}/>
         </section>
 
-        <section className={styles.button}>
+        <section className={styles.buttons}>
             <Skeleton width={140} height={33}/>
+            <Skeleton width={55} height={33}/>
         </section>
       </section>
 

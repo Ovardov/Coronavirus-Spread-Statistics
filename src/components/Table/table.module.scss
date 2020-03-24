@@ -25,13 +25,14 @@
   & tr {
     border-bottom: 1px solid black;
 
-    .red {
-      background: #ff0000b5;
-      color: #FFF;
+    & .yellow {
+      background: #ffeeaafc;
     }
 
-    .yellow {
-      background: #ffeeaafc;
+    & .red {
+
+      background: #ff0000b5;
+      color: #FFF;
     }
 
     & td,

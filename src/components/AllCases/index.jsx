@@ -1,20 +1,23 @@
 import React from 'react'
+import { useTranslations } from '../../hooks/useTranslations'
 import styles from './all-cases.module.scss'
 
 const AllCases = ({ cases, recovered, deaths }) => {
+  const { translate } = useTranslations();
+
   return (
     <section className={styles.container}>
       <section className={styles.cases}>
         <p>{cases}</p>
-        <p className={styles.title}>Confirmed</p>
+        <p className={styles.title}>{translate('allCases.cases')}</p>
       </section>
       <section className={styles.recovered}>
         <p>{recovered}</p>
-        <p className={styles.title}>Recovered</p>
+        <p className={styles.title}>{translate('allCases.recovered')}</p>
       </section>
       <section className={styles.deaths}>
         <p>{deaths}</p>
-        <p className={styles.title}>Deaths</p>
+        <p className={styles.title}>{translate('allCases.deaths')}</p>
       </section>
     </section>
   )
