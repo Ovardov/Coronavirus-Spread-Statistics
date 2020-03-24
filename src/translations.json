@@ -1,0 +1,50 @@
+{
+  "en": {
+    "allCases": {
+      "cases": "Confirmed",
+      "recovered": "Recovered",
+      "deaths": "Deaths"
+    },
+    "buttons": {
+      "seeAllCountries": "See all Countries",
+      "goToMap": "Go To Map"
+    },
+    "table": {
+      "country": "Country",
+      "cases": "Total Cases",
+      "todayCases": "Today Cases",
+      "deaths": "Total Deaths",
+      "todayDeaths": "Today Deaths",
+      "recovered": "Recovered",
+      "active": "Active",
+      "critical": "Critical",
+      "casesPerOneMillion": "Cases Per One Million",
+      "deathsPerOneMillion": "Deaths Per One Million"
+    },
+    "searchPlaceholder": "Search"
+  },
+  "bg": {
+    "allCases": {
+      "cases": "Потвърдени",
+      "recovered": "Възстановени",
+      "deaths": "Смъртни случаи"
+    },
+    "buttons": {
+      "seeAllCountries": "Виж всички Държави",
+      "goToMap": "Към карта"
+    },
+    "table": {
+      "country": "Държава",
+      "cases": "Потвърдени",
+      "todayCases": "Случаи днес",
+      "deaths": "Смъртни случаи",
+      "todayDeaths": "Смъртни случаи днес",
+      "recovered": "Излекувани",
+      "active": "Активни",
+      "critical": "В критично състояние",
+      "casesPerOneMillion": "Случаи за един милион",
+      "deathsPerOneMillion": "Смъртни случаи за един милион"
+    },
+    "searchPlaceholder": "Търси"
+  }
+}

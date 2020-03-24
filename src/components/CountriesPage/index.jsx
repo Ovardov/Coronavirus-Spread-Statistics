@@ -2,12 +2,14 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Table from '../Table'
 import Search from '../Search'
+import { useTranslations } from '../../hooks/useTranslations'
 import { useStatistics } from '../../hooks/useStatistics'
 import styles from './countries-page.module.scss'
 import CountriesPageSkeleton from './Skeleton'
 
 const CountriesPage = () => {
   const { allCountries } = useStatistics();
+  const {translate} = useTranslations()
 
   const [filteredCountries, setFilteredCountries] = useState(allCountries)
   const [searchedCountry, setSearchedCountry] = useState('')
@@ -61,7 +63,7 @@ const CountriesPage = () => {
           <Fragment>
             <div className={styles.header}>
               <Link to="/">
-                <button className="button">Go To Map</button>
+                <button className="button">{translate('buttons.goToMap')}</button>
               </Link>
 
               <Search setSearchedCountry={setSearchedCountry} searchedCountry={searchedCountry} findCountryHandler={findCountryHandler} />

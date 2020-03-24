@@ -1,17 +1,21 @@
 import React from 'react'
+import { useTranslations } from '../../hooks/useTranslations'
 import styles from './country-card.module.scss'
 
-function CountryCard({ cases, recovered, deaths, todayDeaths, todayCases, active, critical, casesPerOneMillion }) {
+function CountryCard({ country, cases, recovered, deaths, todayDeaths, todayCases, active, critical, casesPerOneMillion }) {
+    const { translate } = useTranslations();
+
     return (
         <ul className={styles['more-info']}>
-            <li>All Cases: <span className={styles.info}>{cases}</span></li>
-            <li>Recovered: <span className={styles.info}>{recovered}</span></li>
-            <li>Deaths: <span className={styles.info}>{deaths}</span></li>
-            <li>Today Cases: <span className={styles.info}>{todayCases}</span></li>
-            <li>Today Deaths: <span className={styles.info}>{todayDeaths}</span></li>
-            <li>Active: <span className={styles.info}>{active}</span></li>
-            <li>Critical: <span className={styles.info}>{critical}</span></li>
-            <li>Cases Per One Million: <span className={styles.info}>{casesPerOneMillion}</span></li>
+            <li>{translate('table.country')}: <span className={styles.info}>{country}</span></li>
+            <li>{translate('table.cases')}: <span className={styles.info}>{cases}</span></li>
+            <li>{translate('table.recovered')}: <span className={styles.info}>{recovered}</span></li>
+            <li>{translate('table.deaths')}: <span className={styles.info}>{deaths}</span></li>
+            <li>{translate('table.todayCases')}: <span className={styles.info}>{todayCases}</span></li>
+            <li>{translate('table.todayDeaths')}: <span className={styles.info}>{todayDeaths}</span></li>
+            <li>{translate('table.active')}: <span className={styles.info}>{active}</span></li>
+            <li>{translate('table.critical')}: <span className={styles.info}>{critical}</span></li>
+            <li>{translate('table.casesPerOneMillion')}: <span className={styles.info}>{casesPerOneMillion}</span></li>
         </ul>
     )
 }

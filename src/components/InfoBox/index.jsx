@@ -1,11 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import AllCases from '../AllCases'
-// import CountryCard from '../Countries/CountryCard'
 import styles from './info-box.module.scss'
 import Search from '../Search'
+import { useTranslations } from '../../hooks/useTranslations'
 
 const InfoBox = ({ allCases, findCountryHandler, searchedCountry, setSearchedCountry }) => {
+  const { activeLanguage, changeLanguage, translate } = useTranslations();
 
   return (
     <section className={styles.container}>
@@ -17,10 +18,13 @@ const InfoBox = ({ allCases, findCountryHandler, searchedCountry, setSearchedCou
         <Search findCountryHandler={findCountryHandler} searchedCountry={searchedCountry} setSearchedCountry={setSearchedCountry} />
       </section>
 
-      <section>
+      <section className={styles.buttons}>
         <Link to="/countries">
-          <button className="button">See All Countries</button>
+          <button className="button">{translate('buttons.seeAllCountries')}</button>
         </Link>
+
+        {activeLanguage === 'bg' && <button className="button" onClick={() => changeLanguage('en')}>BG</button>}
+        {activeLanguage === 'en' && <button className="button" onClick={() => changeLanguage('bg')}>EN</button>}
       </section>
     </section>
   )
