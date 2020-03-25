@@ -9,12 +9,12 @@ import CountriesPageSkeleton from './Skeleton'
 
 const CountriesPage = () => {
   const { allCountries } = useStatistics();
-  const {translate} = useTranslations()
+  const { translate } = useTranslations()
 
   const [filteredCountries, setFilteredCountries] = useState(allCountries)
   const [searchedCountry, setSearchedCountry] = useState('')
   const [lastSorting, setLastSorting] = useState({ method: 'descending', key: 'cases' });
-
+  const [allColumns, setAllColumns] = useState([]);
 
   const findCountryHandler = e => {
     e.preventDefault();
@@ -29,6 +29,8 @@ const CountriesPage = () => {
   useEffect(() => {
     if (allCountries.length > 0) {
       setFilteredCountries(allCountries)
+
+      setAllColumns(translate('table'));
     }
   }, [allCountries])
 
@@ -57,24 +59,26 @@ const CountriesPage = () => {
 
 
   return (
-    <div className={styles.container}>
+    <Fragment>
       {allCountries.length > 0
         ? (
-          <Fragment>
-            <div className={styles.header}>
-              <Link to="/">
-                <button className="button">{translate('buttons.goToMap')}</button>
-              </Link>
+          <div className={styles.container}>
+            <Fragment>
+              <div className={styles.header}>
+                <Link to="/">
+                  <button className="button">{translate('buttons.goToMap')}</button>
+                </Link>
 
-              <Search setSearchedCountry={setSearchedCountry} searchedCountry={searchedCountry} findCountryHandler={findCountryHandler} />
-            </div>
+                <Search setSearchedCountry={setSearchedCountry} searchedCountry={searchedCountry} findCountryHandler={findCountryHandler} />
+              </div>
 
-            <Table filteredCountries={filteredCountries} sortCountriesHandler={sortCountriesHandler} lastSorting={lastSorting} />
-          </Fragment>
+              <Table allColumns={allColumns} filteredCountries={filteredCountries} sortCountriesHandler={sortCountriesHandler} lastSorting={lastSorting} />
+            </Fragment>
+          </div>
         ) : (
           <CountriesPageSkeleton />
         )}
-    </div>
+    </Fragment>
   )
 }
 

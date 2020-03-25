@@ -1,21 +1,20 @@
 import React from 'react'
 import styles from './table.module.scss'
-import { useTranslations } from '../../hooks/useTranslations'
 
 const renderCountries = filteredCountries => {
   return filteredCountries.map(country => {
     return (
-      <tr key={country._id} className={styles.grid}>
-        <td key={country.country}>{country.country}</td>
-        <td key={country.country}>{country.cases}</td>
-        <td className={styles.yellow} key={country.country}>{country.todayCases}</td>
-        <td key={country.country}>{country.deaths}</td>
-        <td className={styles.red} key={country.country}>{country.todayDeaths}</td>
-        <td key={country.country}>{country.recovered}</td>
-        <td key={country.country}>{country.active}</td>
-        <td key={country.country}>{country.critical}</td>
-        <td key={country.country}>{country.casesPerOneMillion}</td>
-        <td key={country.country}>{country.deathsPerOneMillion}</td>
+      <tr key={country.country} className={styles.grid}>
+        <td>{country.country}</td>
+        <td>{country.cases}</td>
+        <td className={styles.yellow} >{country.todayCases}</td>
+        <td>{country.deaths}</td>
+        <td className={styles.red} >{country.todayDeaths}</td>
+        <td>{country.recovered}</td>
+        <td>{country.active}</td>
+        <td>{country.critical}</td>
+        <td>{country.casesPerOneMillion}</td>
+        <td>{country.deathsPerOneMillion}</td>
       </tr>
     )
   })
@@ -32,11 +31,7 @@ const renderColumns = (allColumns, sortCountriesHandler, lastSorting) => {
   })
 }
 
-const Table = ({ filteredCountries, sortCountriesHandler, lastSorting }) => {
-  const { translate } = useTranslations();
-
-  const allColumns = translate('table');
-
+const Table = ({ allColumns, filteredCountries, sortCountriesHandler, lastSorting }) => {
   return (
     <div className={styles.box}>
       <table className={styles.container}>

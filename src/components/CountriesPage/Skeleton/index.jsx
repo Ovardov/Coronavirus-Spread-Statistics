@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 import styles from './skeleton.module.scss'
 
 const CountriesPageSkeleton = () => {
   return (
-    <Fragment>
+    <div className={styles.container}>
       <section className={styles.header}>
         <Skeleton className={styles.button} width={100} height={33} />
 
@@ -16,7 +16,7 @@ const CountriesPageSkeleton = () => {
       <section className={styles.map}>
         <Skeleton width="100%" height="100%" />
       </section>
-    </Fragment>
+    </div>
   )
 }
 
