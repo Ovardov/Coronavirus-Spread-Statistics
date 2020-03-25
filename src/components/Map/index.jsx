@@ -26,8 +26,8 @@ function Map({ marker, setMarker, getCountryData }) {
 
   return (
     <GoogleMapReact
-      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY, v: '3.32' }}
-      gestureHandling='greedy'
+      bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY, v: '3.31' }}
+
       defaultCenter={{ lat: 30, lng: 0 }}
       defaultZoom={1}
       center={marker && { lat: marker.lat - 5, lng: marker.lng + 6 }}
@@ -35,6 +35,7 @@ function Map({ marker, setMarker, getCountryData }) {
       onGoogleApiLoaded={({ map, maps }) => handleLoadedMap(map, maps)}
       yesIWantToUseGoogleMapApiInternals
       onClick={getCountryData}
+      options={{ gestureHandling: 'greedy' }}
     >
       {isLoaded && marker && <Marker lat={marker.lat} lng={marker.lng} marker={marker} />}
     </GoogleMapReact>
