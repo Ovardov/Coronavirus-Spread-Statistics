@@ -15,7 +15,7 @@ function Map({ marker, getCountryData }) {
       onGoogleApiLoaded={({ map, maps }) => setIsLoaded(true)}
       yesIWantToUseGoogleMapApiInternals
       onClick={getCountryData}
-      options={{ gestureHandling: 'greedy', }}
+      options={{ gestureHandling: 'greedy', draggableCursor: 'pointer', }}
     >
       {isLoaded && marker && <Marker lat={marker.lat} lng={marker.lng} marker={marker} />}
     </GoogleMapReact>
