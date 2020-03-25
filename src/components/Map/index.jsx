@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Marker from './Marker'
 
-function Map({marker, setMarker, getCountryData}) {
+function Map({ marker, setMarker, getCountryData }) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [map, setMap] = useState(null)
   const [maps, setMaps] = useState(null)
@@ -27,15 +27,16 @@ function Map({marker, setMarker, getCountryData}) {
   return (
     <GoogleMapReact
       bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY, v: '3.32' }}
+      gestureHandling='greedy'
       defaultCenter={{ lat: 30, lng: 0 }}
       defaultZoom={1}
-      center={marker}
+      center={marker && { lat: marker.lat - 5, lng: marker.lng + 6 }}
       zoom={marker ? 5 : 1}
       onGoogleApiLoaded={({ map, maps }) => handleLoadedMap(map, maps)}
       yesIWantToUseGoogleMapApiInternals
       onClick={getCountryData}
     >
-      {isLoaded && marker && <Marker lat={marker.lat} lng={marker.lng} marker={marker}/>}
+      {isLoaded && marker && <Marker lat={marker.lat} lng={marker.lng} marker={marker} />}
     </GoogleMapReact>
   )
 }
