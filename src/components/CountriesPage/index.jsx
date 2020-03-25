@@ -29,10 +29,11 @@ const CountriesPage = () => {
   useEffect(() => {
     if (allCountries.length > 0) {
       setFilteredCountries(allCountries)
-
       setAllColumns(translate('table'));
     }
-  }, [allCountries])
+
+    
+  }, [allCountries, translate])
 
   useEffect(() => {
     const filterValue = searchedCountry ? searchedCountry.toLowerCase() : '';
@@ -40,7 +41,8 @@ const CountriesPage = () => {
     const countries = allCountries.filter(({ country }) => country.toLowerCase().includes(filterValue))
 
     setFilteredCountries(countries)
-  }, [searchedCountry])
+
+  }, [searchedCountry, allCountries])
 
   const sortCountriesHandler = (key) => {
     const countries = [...filteredCountries]
