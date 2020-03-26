@@ -1,4 +1,4 @@
-# Social-Network
+# Coronavirus-Statistics
 
 <table>
   <tbody>
@@ -40,9 +40,9 @@
 
 
 ## Table of Contents
-1. [Application Configurations](https://github.com/Ovardov/Social-Network#application-configurations)
-2. [Technology stack](https://github.com/Ovardov/Social-Network#technology-stack)
-3. [Routing](https://github.com/Ovardov/Social-Network#routing)
+1. [Application Configurations](https://github.com/Ovardov/Coronavirus-Statistick#application-configurations)
+2. [Technology stack](https://github.com/Ovardov/Coronavirus-Statistic#technology-stack)
+3. [Routing](https://github.com/Ovardov/Coronavirus-Statistick#routing)
 
 ## Application Configurations
 1. Type in the terminal the following in root directory:
