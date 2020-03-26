@@ -4,6 +4,7 @@
   min-width: 20em;
   font-size: 1.3em;
   transform: translate(-50%, 0);
+  position: relative;
 
   & .close {
     display: block;
@@ -51,5 +52,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    top: 0em;
+    left: 0em;
+    position: absolute;
   }
 }

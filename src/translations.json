@@ -21,7 +21,10 @@
       "casesPerOneMillion": "Cases Per One Million",
       "deathsPerOneMillion": "Deaths Per One Million"
     },
-    "searchPlaceholder": "Search"
+    "searchPlaceholder": "Search",
+    "map": {
+      "noCasesText": "No cases registered"
+    }
   },
   "bg": {
     "allCases": {
@@ -45,6 +48,9 @@
       "casesPerOneMillion": "Случаи за един милион",
       "deathsPerOneMillion": "Смъртни случаи за един милион"
     },
-    "searchPlaceholder": "Търси"
+    "searchPlaceholder": "Търси",
+    "map": {
+      "noCasesText": "Няма регистрирани случаи"
+    }
   }
 }

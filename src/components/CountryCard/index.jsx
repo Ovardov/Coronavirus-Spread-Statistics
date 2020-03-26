@@ -29,7 +29,7 @@ function CountryCard({ isOpened, setIsOpened, country, cases, recovered, deaths,
               <li>{translate('table.casesPerOneMillion')}: <span className={styles.info}>{casesPerOneMillion}</span></li>
             </ul>
           ) : (
-              <p className={styles['no-info']}>Няма намерени резултати</p>
+              <p className={styles['no-info']}>{translate('map.noCasesText')}</p>
             )}
         </Fragment>
       )}
