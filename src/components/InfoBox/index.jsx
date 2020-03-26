@@ -23,8 +23,10 @@ const InfoBox = ({ allCases, findCountryHandler, searchedCountry, setSearchedCou
           <button className="button">{translate('buttons.seeAllCountries')}</button>
         </Link>
 
-        {activeLanguage === 'bg' && <button className="button" onClick={() => changeLanguage('en')}>BG</button>}
-        {activeLanguage === 'en' && <button className="button" onClick={() => changeLanguage('bg')}>EN</button>}
+        <div className={styles['language-buttons']}>
+          <button className="button" onClick={() => changeLanguage('bg')}>BG</button>
+          <button className="button" onClick={() => changeLanguage('en')}>EN</button>
+        </div>
       </section>
     </section>
   )

@@ -8,15 +8,15 @@ const AllCases = ({ cases, recovered, deaths }) => {
   return (
     <section className={styles.container}>
       <section className={styles.cases}>
-        <p>{cases}</p>
+        <p>{cases.toLocaleString()}</p>
         <p className={styles.title}>{translate('allCases.cases')}</p>
       </section>
       <section className={styles.recovered}>
-        <p>{recovered}</p>
+        <p>{recovered.toLocaleString()}</p>
         <p className={styles.title}>{translate('allCases.recovered')}</p>
       </section>
       <section className={styles.deaths}>
-        <p>{deaths}</p>
+        <p>{deaths.toLocaleString()}</p>
         <p className={styles.title}>{translate('allCases.deaths')}</p>
       </section>
     </section>
