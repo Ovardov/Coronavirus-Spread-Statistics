@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import {
   useStatisticsProvider,
   StatisticContext
@@ -20,7 +21,13 @@ function App() {
     <LanguageContext.Provider value={languageContextValue}>
       <StatisticContext.Provider value={statiscticsContextValue}>
         <BrowserRouter>
-          <Suspense fallback={<div>Loading</div>}>
+            <Helmet>
+              <meta charSet="utf-8" />
+              <meta name="description" content={languageContextValue.translate('app.description')} />
+              <link rel="canonical" href="https://ovardov.netlify.com/" />
+              <title>{languageContextValue.translate('app.title')}</title>
+            </Helmet>
+
             <div className={styles.site}>
               <main className={styles['site-main']}>
                 <Suspense fallback={<HomePageSkeleton />}>
@@ -36,7 +43,6 @@ function App() {
                 </Suspense>
               </main>
             </div>
-          </Suspense>
         </BrowserRouter>
       </StatisticContext.Provider>
     </LanguageContext.Provider>

@@ -37,6 +37,8 @@ const getCountryCovidStats = (results, allCountries, searchedCountry) => {
       key = 'Saint Lucia'
     } else if(countryName === 'St Vincent and the Grenadines') {
       key = 'St. Vincent Grenadines';
+    } else if (countryName === 'Iran') {
+      key = 'Iran, Islamic Republic of'
     }
     
     countryStats = allCountries.length > 0 && allCountries.filter(({country}) => country.toLowerCase() === key.toLowerCase())[0];

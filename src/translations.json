@@ -1,5 +1,9 @@
 {
   "en": {
+    "app": {
+      "title": "Coronavirus spread",
+      "description": "Live coronavirus news, tracking confirmed cases, recovered patients, and death toll by country."
+    },
     "allCases": {
       "cases": "Confirmed",
       "recovered": "Recovered",
@@ -27,6 +31,10 @@
     }
   },
   "bg": {
+    "app": {
+      "title": "Разпространение на коронавирус",
+      "description": "Проследяване разпространението на коронавирус по света, чрез потвърдени данни за активност, смъртност и възстановени пациенти."
+    },
     "allCases": {
       "cases": "Потвърдени",
       "recovered": "Възстановени",
