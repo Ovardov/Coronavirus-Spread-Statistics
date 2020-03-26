@@ -6,7 +6,7 @@ import Search from '../Search'
 import { useTranslations } from '../../hooks/useTranslations'
 
 const InfoBox = ({ allCases, findCountryHandler, searchedCountry, setSearchedCountry }) => {
-  const { activeLanguage, changeLanguage, translate } = useTranslations();
+  const { changeLanguage, translate } = useTranslations();
 
   return (
     <section className={styles.container}>
