@@ -40,9 +40,9 @@
 
 
 ## Table of Contents
-1. [Application Configurations](https://github.com/Ovardov/Coronavirus-Statistick#application-configurations)
-2. [Technology stack](https://github.com/Ovardov/Coronavirus-Statistic#technology-stack)
-3. [Routing](https://github.com/Ovardov/Coronavirus-Statistick#routing)
+1. [Application Configurations](https://github.com/Ovardov/Coronavirus-Statistics#application-configurations)
+2. [Technology stack](https://github.com/Ovardov/Coronavirus-Statistics#technology-stack)
+3. [Routing](https://github.com/Ovardov/Coronavirus-Statistics#routing)
 
 ## Application Configurations
 1. Type in the terminal the following in root directory:
