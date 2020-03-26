@@ -25,17 +25,21 @@ const HomePageSkeleton = () => {
         </section>
 
         <section className={styles['search-box']}>
-            <Skeleton width="100%" height={36}/>
+          <Skeleton width="100%" height={36} />
         </section>
 
         <section className={styles.buttons}>
-            <Skeleton width={140} height={33}/>
-            <Skeleton width={55} height={33}/>
+          <Skeleton width={140} height={33} />
+
+          <div className={styles['language-buttons']}>
+            <Skeleton width={55} height={33} />
+            <Skeleton width={55} height={33} />
+          </div>
         </section>
       </section>
 
       <section className={styles.map} >
-          <Skeleton width="100vw" height="100vh"/>
+        <Skeleton width="100vw" height="100vh" />
       </section>
     </div>
   )

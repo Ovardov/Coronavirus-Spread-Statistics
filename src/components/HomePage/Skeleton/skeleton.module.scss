@@ -45,6 +45,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      & .language-buttons {
+        margin-left: auto;
+  
+        & > span:first-child > span {
+          margin-right: 0.5em;
+        }
+      }
     }
   }
 
