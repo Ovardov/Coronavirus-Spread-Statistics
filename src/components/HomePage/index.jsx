@@ -39,6 +39,10 @@ const getCountryCovidStats = (results, allCountries, searchedCountry) => {
       key = 'St. Vincent Grenadines';
     } else if (countryName === 'Iran') {
       key = 'Iran, Islamic Republic of'
+    } else if(countryName === 'North Macedonia') {
+      key = 'Macedonia'
+    } else if(countryName === 'Bosnia and Herzegovina') {
+      key = 'Bosnia'
     }
     
     countryStats = allCountries.length > 0 && allCountries.filter(({country}) => country.toLowerCase() === key.toLowerCase())[0];

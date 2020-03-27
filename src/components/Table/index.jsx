@@ -33,7 +33,7 @@ const renderColumns = (allColumns, sortCountriesHandler, lastSorting) => {
 
 const Table = ({ allColumns, filteredCountries, sortCountriesHandler, lastSorting }) => {
   return (
-    <div className={styles.box}>
+    <div className={`${styles.box} ${filteredCountries.length === 0 ? styles['no-scroll'] : ''}`} >
       <table className={styles.container}>
         <thead className={styles.header}>
           <tr className={styles.grid}>
