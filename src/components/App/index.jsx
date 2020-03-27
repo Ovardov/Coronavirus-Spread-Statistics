@@ -21,28 +21,28 @@ function App() {
     <LanguageContext.Provider value={languageContextValue}>
       <StatisticContext.Provider value={statiscticsContextValue}>
         <BrowserRouter>
-            <Helmet>
-              <meta charSet="utf-8" />
-              <meta name="description" content={languageContextValue.translate('app.description')} />
-              <link rel="canonical" href="https://ovardov.netlify.com/" />
-              <title>{languageContextValue.translate('app.title')}</title>
-            </Helmet>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <meta name="description" content={languageContextValue.translate('app.description')} />
+            <link rel="canonical" href="https://ovardov.netlify.com/" />
+            <title>{languageContextValue.translate('app.title')}</title>
+          </Helmet>
 
-            <div className={styles.site}>
-              <main className={styles['site-main']}>
-                <Suspense fallback={<HomePageSkeleton />}>
-                  <Switch>
-                    <Route exact path="/" component={HomePage} />
-                  </Switch>
-                </Suspense>
+          <div className={styles.site}>
+            <main className={styles['site-main']}>
+              <Suspense fallback={<HomePageSkeleton />}>
+                <Switch>
+                  <Route exact path="/" component={HomePage} />
+                </Switch>
+              </Suspense>
 
-                <Suspense fallback={<CountriesPageSkeleton />}>
-                  <Switch>
-                    <Route path="/countries" component={CountriesPage} />
-                  </Switch>
-                </Suspense>
-              </main>
-            </div>
+              <Suspense fallback={<CountriesPageSkeleton />}>
+                <Switch>
+                  <Route path="/countries" component={CountriesPage} />
+                </Switch>
+              </Suspense>
+            </main>
+          </div>
         </BrowserRouter>
       </StatisticContext.Provider>
     </LanguageContext.Provider>
