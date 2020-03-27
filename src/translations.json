@@ -1,7 +1,7 @@
 {
   "en": {
     "app": {
-      "title": "Coronavirus spread",
+      "title": "Coronavirus spread statistics",
       "description": "Live coronavirus news, tracking confirmed cases, recovered patients, and death toll by country."
     },
     "allCases": {
@@ -32,7 +32,7 @@
   },
   "bg": {
     "app": {
-      "title": "Разпространение на коронавирус",
+      "title": "Статистика за разпространението на коронавирус",
       "description": "Проследяване разпространението на коронавирус по света, чрез потвърдени данни за активност, смъртност и възстановени пациенти."
     },
     "allCases": {
