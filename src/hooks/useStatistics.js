@@ -21,7 +21,9 @@ export const useStatisticsProvider = () => {
           deaths: casesRes.deaths
         })
 
-        setAllCountries(countriesRes)
+        const filteredCountries = countriesRes.sort((a, b) => b.cases - a.cases)
+
+        setAllCountries(filteredCountries)
 
       } catch (e) {
         console.error('Load all cases', e)
