@@ -20,6 +20,7 @@ const renderCountries = filteredCountries => {
   })
 }
 
+
 const renderColumns = (allColumns, sortCountriesHandler, lastSorting) => {
   return Object.entries(allColumns).map(([key, value]) => {
     return (
