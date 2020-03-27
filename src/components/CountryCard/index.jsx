@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { useTranslations } from '../../hooks/useTranslations'
 import styles from './country-card.module.scss'
 
-function CountryCard({ isOpened, setIsOpened, country, cases, recovered, deaths, todayDeaths, todayCases, active, critical, casesPerOneMillion }) {
+function CountryCard({ isOpened, setIsOpened, country, cases, recovered, deaths, todayDeaths, todayCases, active, critical, casesPerOneMillion, deathsPerOneMillion }) {
   const { translate } = useTranslations();
 
   const handleClose = (e) => {
@@ -27,6 +27,7 @@ function CountryCard({ isOpened, setIsOpened, country, cases, recovered, deaths,
               <li>{translate('table.active')}: <span className={styles.info}>{active}</span></li>
               <li>{translate('table.critical')}: <span className={styles.info}>{critical}</span></li>
               <li>{translate('table.casesPerOneMillion')}: <span className={styles.info}>{casesPerOneMillion}</span></li>
+              <li>{translate('table.deathsPerOneMillion')}: <span className={styles.info}>{deathsPerOneMillion}</span></li>
             </ul>
           ) : (
               <p className={styles['no-info']}>{translate('map.noCasesText')}</p>

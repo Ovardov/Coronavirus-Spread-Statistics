@@ -37,7 +37,7 @@
     },
     "allCases": {
       "cases": "Потвърдени",
-      "recovered": "Възстановени",
+      "recovered": "Излекувани",
       "deaths": "Смъртни случаи"
     },
     "buttons": {

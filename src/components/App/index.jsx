@@ -24,7 +24,7 @@ function App() {
           <Helmet>
             <meta charSet="utf-8" />
             <meta name="description" content={languageContextValue.translate('app.description')} />
-            <link rel="canonical" href="https://ovardov.netlify.com/" />
+            <link rel="canonical" href="https://www.coronavirus-spread-statistics.com/" />
             <title>{languageContextValue.translate('app.title')}</title>
           </Helmet>
 
