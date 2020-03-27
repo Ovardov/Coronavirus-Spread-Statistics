@@ -8,7 +8,8 @@
 
     & input[type='text'] {
       padding: 0.2em 7.5em 0.2em 0.5em;
-      border-radius: 0.3em;
+      border-top-left-radius: 0.3em;
+      border-bottom-left-radius: 0.3em;
       outline: none;
       border: 1px solid #e8e8e8;
       width: 100%;
