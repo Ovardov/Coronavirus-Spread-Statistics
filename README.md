@@ -19,8 +19,6 @@
   </tbody>
 </table>
 
-[## Live Demo](https://www.coronavirus-spread-statistics.com/)
-
 ## Table of Contents
 1. [Application Configurations](https://github.com/Ovardov/Coronavirus-Spread-Statistics#application-configurations)
 2. [Technology stack](https://github.com/Ovardov/Coronavirus-Spread-Statistics#technology-stack)
