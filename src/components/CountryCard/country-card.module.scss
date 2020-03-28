@@ -1,6 +1,6 @@
 .container {
   background: #FFFFFF;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
   min-width: 20em;
   font-size: 1.3em;
   transform: translate(-50%, 0);
@@ -39,6 +39,8 @@
 
       &:last-child {
         margin-bottom: 0;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
       }
     }
 
