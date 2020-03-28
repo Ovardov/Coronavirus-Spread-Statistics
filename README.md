@@ -19,8 +19,7 @@
   </tbody>
 </table>
 
-## Live Demo
-[I'm an inline-style link](https://www.coronavirus-spread-statistics.com/)
+[## Live Demo](https://www.coronavirus-spread-statistics.com/)
 
 ## Table of Contents
 1. [Application Configurations](https://github.com/Ovardov/Coronavirus-Spread-Statistics#application-configurations)
