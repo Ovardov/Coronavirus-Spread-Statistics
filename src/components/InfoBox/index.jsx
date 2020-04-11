@@ -20,7 +20,7 @@ const InfoBox = ({ allCases, findCountryHandler, searchedCountry, setSearchedCou
 
       <section className={styles.buttons}>
         <Link to="/countries">
-          <button className="button">{translate('buttons.seeAllCountries')}</button>
+          <button className={`${styles['see-all']} button`}>{translate('buttons.seeAllCountries')}</button>
         </Link>
 
         <div className={styles['language-buttons']}>

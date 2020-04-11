@@ -15,16 +15,11 @@ export const useStatisticsProvider = () => {
         const casesRes = await dataService.loadAllCases()
         const countriesRes = await dataService.loadAllCountries()
 
-        setAllCases({
-          cases: casesRes.cases,
-          recovered: casesRes.recovered,
-          deaths: casesRes.deaths
-        })
+        setAllCases(casesRes)
 
-        const filteredCountries = countriesRes.sort((a, b) => b.cases - a.cases)
+        const sortedCountries = countriesRes.sort((a, b) => b.cases - a.cases);
 
-        setAllCountries(filteredCountries)
-
+        setAllCountries(sortedCountries)
       } catch (e) {
         console.error('Load all cases', e)
       }

@@ -6,15 +6,17 @@ const renderCountries = filteredCountries => {
     return (
       <tr key={country.country} className={styles.grid}>
         <td>{country.country}</td>
-        <td>{country.cases}</td>
-        <td className={styles.yellow} >{country.todayCases}</td>
-        <td>{country.deaths}</td>
-        <td className={styles.red} >{country.todayDeaths}</td>
-        <td>{country.recovered}</td>
-        <td>{country.active}</td>
-        <td>{country.critical}</td>
-        <td>{country.casesPerOneMillion}</td>
-        <td>{country.deathsPerOneMillion}</td>
+        <td>{country.cases.toLocaleString()}</td>
+        <td className={styles.yellow} >{country.todayCases.toLocaleString()}</td>
+        <td>{country.deaths.toLocaleString()}</td>
+        <td className={styles.red} >{country.todayDeaths.toLocaleString()}</td>
+        <td>{country.recovered.toLocaleString()}</td>
+        <td>{country.active.toLocaleString()}</td>
+        <td>{country.critical.toLocaleString()}</td>
+        <td>{country.casesPerOneMillion.toLocaleString()}</td>
+        <td>{country.deathsPerOneMillion.toLocaleString()}</td>
+        <td>{country.country !== 'China' && country.tests.toLocaleString()}</td>
+        <td>{country.country !== 'China' && country.testsPerOneMillion.toLocaleString()}</td>
       </tr>
     )
   })
@@ -32,7 +34,7 @@ const renderColumns = (allColumns, sortCountriesHandler, lastSorting) => {
   })
 }
 
-const Table = ({ allColumns, filteredCountries, sortCountriesHandler, lastSorting }) => {
+const Table = ({ filteredAllCases, allColumns, filteredCountries, sortCountriesHandler, lastSorting }) => {
   return (
     <div className={`${styles.box} ${filteredCountries.length === 0 ? styles['no-scroll'] : ''}`} >
       <table className={styles.container}>
@@ -43,6 +45,7 @@ const Table = ({ allColumns, filteredCountries, sortCountriesHandler, lastSortin
         </thead>
 
         <tbody className={styles.body}>
+          {Object.keys(filteredAllCases).length > 0 && renderCountries([filteredAllCases])}
           {filteredCountries.length > 0 && renderCountries(filteredCountries)}
         </tbody>
       </table>

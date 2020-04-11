@@ -100,6 +100,17 @@
           background: #EEE;
         }
       }
+
+      &:first-child {
+        background: #BBB;
+
+        & td:first-child,
+        & .red,
+        & .yellow {
+          background: #BBB;
+          color: #000;
+        }
+      }
     }
   }
 }

@@ -20,9 +20,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    & .see-all {
+      margin-right: 1em;
+    }
    
     & .language-buttons {
       margin-left: auto;
+      display: flex;
+      justify-content: flex-end;
 
       & > button:first-child {
         margin-right: 0.5em;

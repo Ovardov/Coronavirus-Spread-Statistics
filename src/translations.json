@@ -5,6 +5,7 @@
       "description": "Live coronavirus news, tracking confirmed cases, recovered patients, and death toll by country."
     },
     "allCases": {
+      "country": "World",
       "cases": "Confirmed",
       "recovered": "Recovered",
       "deaths": "Deaths"
@@ -23,7 +24,9 @@
       "active": "Active",
       "critical": "Critical",
       "casesPerOneMillion": "Cases Per One Million",
-      "deathsPerOneMillion": "Deaths Per One Million"
+      "deathsPerOneMillion": "Deaths Per One Million",
+      "tests": "Total Tests",
+      "testsPerOneMillion": "Tests Per One Million"
     },
     "searchPlaceholder": "Search",
     "map": {
@@ -36,6 +39,7 @@
       "description": "Проследяване разпространението на коронавирус по света, чрез потвърдени данни за активност, смъртност и възстановени пациенти."
     },
     "allCases": {
+      "country": "В световен мащаб",
       "cases": "Потвърдени",
       "recovered": "Излекувани",
       "deaths": "Смъртни случаи"
@@ -54,7 +58,9 @@
       "active": "Активни",
       "critical": "В критично състояние",
       "casesPerOneMillion": "Случаи за един милион",
-      "deathsPerOneMillion": "Смъртни случаи за един милион"
+      "deathsPerOneMillion": "Смъртни случаи за един милион",
+      "tests": "Изследвани",
+      "testsPerOneMillion": "Изследвани на един милион"
     },
     "searchPlaceholder": "Търси",
     "map": {

@@ -8,20 +8,26 @@ import styles from './countries-page.module.scss'
 import CountriesPageSkeleton from './Skeleton'
 
 const CountriesPage = () => {
-  const { allCountries } = useStatistics();
+  const { allCountries, allCases } = useStatistics()
   const { translate } = useTranslations()
 
   const [filteredCountries, setFilteredCountries] = useState(allCountries)
+  const [filteredAllCases, setFilteredAllCases] = useState({})
   const [searchedCountry, setSearchedCountry] = useState('')
-  const [lastSorting, setLastSorting] = useState({ method: 'descending', key: 'cases' });
-  const [allColumns, setAllColumns] = useState([]);
+  const [lastSorting, setLastSorting] = useState({
+    method: 'descending',
+    key: 'cases',
+  })
+  const [allColumns, setAllColumns] = useState([])
 
-  const findCountryHandler = e => {
-    e.preventDefault();
+  const findCountryHandler = (e) => {
+    e.preventDefault()
 
-    const filterValue = searchedCountry ? searchedCountry.toLowerCase() : '';
+    const filterValue = searchedCountry ? searchedCountry.toLowerCase() : ''
 
-    const countries = allCountries.filter(({ country }) => country.toLowerCase().includes(filterValue))
+    const countries = allCountries.filter(({ country }) =>
+      country.toLowerCase().includes(filterValue)
+    )
 
     setFilteredCountries(countries)
   }
@@ -29,57 +35,84 @@ const CountriesPage = () => {
   useEffect(() => {
     if (allCountries.length > 0) {
       setFilteredCountries(allCountries)
-      setAllColumns(translate('table'));
+      setAllColumns(translate('table'))
     }
 
-    
-  }, [allCountries, translate])
+    if (Object.keys(allCases).length > 0) {
+      const country = translate('allCases.country')
+      const testsPerOneMillion = Math.floor(allCases.testsPerOneMillion)
+
+      setFilteredAllCases({
+        ...allCases,
+        country,
+        testsPerOneMillion,
+      })
+    }
+  }, [allCases, allCountries, translate])
 
   useEffect(() => {
-    const filterValue = searchedCountry ? searchedCountry.toLowerCase() : '';
+    const filterValue = searchedCountry ? searchedCountry.toLowerCase() : ''
 
-    const countries = allCountries.filter(({ country }) => country.toLowerCase().includes(filterValue))
+    const countries = allCountries.filter(({ country }) =>
+      country.toLowerCase().includes(filterValue)
+    )
 
     setFilteredCountries(countries)
-
   }, [searchedCountry, allCountries])
 
   const sortCountriesHandler = (key) => {
     const countries = [...filteredCountries]
 
-    const sortingMethod = lastSorting.method === 'ascending' && lastSorting.key === key ? 'descending' : 'ascending';
+    const sortingMethod =
+      lastSorting.method === 'ascending' && lastSorting.key === key
+        ? 'descending'
+        : 'ascending'
 
     const sortedCountries = countries.sort((a, b) => {
       return key === 'country'
-        ? (sortingMethod === 'ascending' ? a[key].localeCompare(b[key]) : b[key].localeCompare(a[key]))
-        : (sortingMethod === 'ascending' ? a[key] - b[key] : b[key] - a[key])
-    });
+        ? sortingMethod === 'ascending'
+          ? a[key].localeCompare(b[key])
+          : b[key].localeCompare(a[key])
+        : sortingMethod === 'ascending'
+        ? a[key] - b[key]
+        : b[key] - a[key]
+    })
 
-    setLastSorting({ method: sortingMethod, key });
-    setFilteredCountries(sortedCountries);
+    setLastSorting({ method: sortingMethod, key })
+    setFilteredCountries(sortedCountries)
   }
-
 
   return (
     <Fragment>
-      {allCountries.length > 0
-        ? (
-          <div className={styles.container}>
-            <Fragment>
-              <div className={styles.header}>
-                <Link to="/">
-                  <button className="button">{translate('buttons.goToMap')}</button>
-                </Link>
+      {allCountries.length > 0 && Object.keys(allCases).length > 0 ? (
+        <div className={styles.container}>
+          <Fragment>
+            <div className={styles.header}>
+              <Link to="/">
+                <button className="button">
+                  {translate('buttons.goToMap')}
+                </button>
+              </Link>
 
-                <Search setSearchedCountry={setSearchedCountry} searchedCountry={searchedCountry} findCountryHandler={findCountryHandler} />
-              </div>
+              <Search
+                setSearchedCountry={setSearchedCountry}
+                searchedCountry={searchedCountry}
+                findCountryHandler={findCountryHandler}
+              />
+            </div>
 
-              <Table allColumns={allColumns} filteredCountries={filteredCountries} sortCountriesHandler={sortCountriesHandler} lastSorting={lastSorting} />
-            </Fragment>
-          </div>
-        ) : (
-          <CountriesPageSkeleton />
-        )}
+            <Table
+              filteredAllCases={filteredAllCases}
+              allColumns={allColumns}
+              filteredCountries={filteredCountries}
+              sortCountriesHandler={sortCountriesHandler}
+              lastSorting={lastSorting}
+            />
+          </Fragment>
+        </div>
+      ) : (
+        <CountriesPageSkeleton />
+      )}
     </Fragment>
   )
 }
