@@ -57,8 +57,8 @@
       "recovered": "Излекувани",
       "active": "Активни",
       "critical": "В критично състояние",
-      "casesPerOneMillion": "Случаи за един милион",
-      "deathsPerOneMillion": "Смъртни случаи за един милион",
+      "casesPerOneMillion": "Случаи на един милион",
+      "deathsPerOneMillion": "Смъртни случаи на един милион",
       "tests": "Изследвани",
       "testsPerOneMillion": "Изследвани на един милион"
     },
