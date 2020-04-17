@@ -1,6 +1,6 @@
 export const dataService = {
     loadAllCases: () => {      
-        return fetch(`https://corona.lmao.ninja/all`, {
+        return fetch(`https://corona.lmao.ninja/v2/all`, {
             method: 'GET',
         })
             .then(res => res.json())
@@ -8,7 +8,7 @@ export const dataService = {
     },
 
     loadAllCountries: () => {
-        return fetch(`https://corona.lmao.ninja/countries`, {
+        return fetch(`https://corona.lmao.ninja/v2/countries`, {
             method: 'GET',
         })
             .then(res => res.json())
