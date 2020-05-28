@@ -35,12 +35,10 @@ const CountriesPage = () => {
 
     if (Object.keys(allCases).length > 0) {
       const country = translate('allCases.country')
-      const testsPerOneMillion = Math.floor(allCases.testsPerOneMillion)
 
       setFilteredAllCases({
         ...allCases,
         country,
-        testsPerOneMillion,
       })
     }
   }, [allCases, allCountries, translate])
